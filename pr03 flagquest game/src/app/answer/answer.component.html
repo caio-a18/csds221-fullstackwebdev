@@ -1,0 +1,10 @@
+<button
+  class="asset button-bar"
+  *ngFor="let choice of question.allChoices"
+  (click)="choose(choice)"
+  [disabled]="mode == 'chose'"
+>
+  <div>
+    {{ getCountryNameFromIndex(choice) }}
+  </div>
+</button>

@@ -1,0 +1,108 @@
+<div class="full-page-container">
+  <div class="header-container">
+    <h1
+      style="font-size: 26px; color: #7084FF; margin-right: 10px; display: inline;"
+    >
+      FlagQuest
+    </h1>
+    <button
+      class="info-button"
+      (click)="toggleInfo()"
+      style="background-color: #7084FF; border: none; cursor: pointer; font-size: 20px;"
+    >
+      <span>ℹ</span>
+    </button>
+  </div>
+  <div *ngIf="showInfo" class="info-box">
+    Welcome to FlagQuest, a game that tests your country flag knoweldge. <br />
+    Think you've got what it takes? Press 'START' to begin!
+  </div>
+  <br />
+  </div>
+  <br />  
+
+<div *ngIf="mode != 'over'; else gameOver">
+  <div *ngIf="countriesLoaded; else gameNotReady">
+    <button
+      class="click button"
+      *ngIf="!gameReady"
+      (click)="setGameReady(true)"
+    >
+      <div>START</div>
+    </button>
+  </div>
+  <div *ngIf="gameReady">
+    <small>Question {{ game.turn + 1 }}/20</small> &nbsp;
+    <small>Score: {{ game.score }}/100</small>
+    <div class="row game-width">
+      <div class="column">
+        <div class="asset big-box flag">
+          <img [src]="game?.questions[game.turn].flagImageSrc" alt="Flag" />
+        </div>
+      </div>
+      <div class="column">
+        <app-answer
+          [mode]="mode"
+          [question]="game?.questions[game.turn]"
+          (makeChoice)="choiceMade($event)"
+        ></app-answer>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <h3 class="game-message">{{ gameMessage }}</h3>
+    <button class="click button" *ngIf="mode == 'chose'" (click)="next()">
+      <div>Next</div>
+    </button>
+  </div>
+  <ng-template #gameNotReady>
+    <p>Game loading...</p>
+  </ng-template>
+</div>
+
+<div class="end-game-container">
+  <ng-template #gameOver>
+    <h2
+      class="text-white"
+      *ngIf="(game.score / 10) * 2 === 10; else notPerfect"
+    >
+      Perfect Score!
+    </h2>
+    <ng-template #notPerfect>
+      <h2
+        class="text-white"
+        *ngIf="(game.score / 10) * 2 >= 8; else almostThere"
+      >
+        Congratulations. You did very well!
+      </h2>
+      <ng-template #almostThere>
+        <h2
+          class="text-white"
+          *ngIf="(game.score / 10) * 2 >= 6; else keepStudying"
+        >
+          Keep studying! You're almost there!
+        </h2>
+        <ng-template #keepStudying>
+          <h2
+            class="text-white"
+            *ngIf="(game.score / 10) * 2 >= 0; else failed"
+          >
+            You failed. Try studying!
+          </h2>
+          <ng-template #failed>
+            <h2 class="text-white">You scored zero. Time to hit the books!</h2>
+          </ng-template>
+        </ng-template>
+      </ng-template>
+    </ng-template>
+
+    <h3 class="score">
+      You got {{ (game.score / 10) * 2 }} out of 20 correct!
+    </h3>
+    <br />
+    <button class="click button" (click)="setGameReady(true)">
+      <div>Try Again</div>
+    </button>
+  </ng-template>
+</div>

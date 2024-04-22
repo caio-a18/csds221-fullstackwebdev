@@ -1,0 +1,109 @@
+p {
+  color: #7084ff;
+}
+
+.click.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #001bca;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: auto; /* centers */
+  margin-right: auto; /* centers */
+}
+
+.click.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.click.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.info-button {
+  background-color: #36d1ff;
+  border: none;
+  cursor: pointer;
+  width: 25px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* This keeps items vertically aligned in the middle */
+  justify-content: center; /* This will horizontally center the items in the container */
+  width: 100%; /* Ensures the container takes full width of its parent */
+}
+
+.info-box {
+  background-color: #7084ff; /* You already have a background color set */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: auto; /* Adjust this if necessary to fit your layout */
+  height: auto; /* Adjust if you have a specific height in mind */
+  position: relative;
+  z-index: 100;
+  color: white; /* Your text color */
+  display: flex; /* Sets the display to Flexbox */
+  flex-direction: column; /* Stacks children vertically */
+  justify-content: center; /* Centers children vertically within the container */
+  align-items: center; /* Centers children horizontally within the container */
+  text-align: center; /* Ensures that the text within each child is centered */
+}
+
+.full-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  flex-direction: column;
+}
+
+.game-message {
+  text-align: center; /* Centers the text horizontally within the element */
+  width: 100%; /* Ensures the element spans the full width of its container */
+  margin: 0 auto; /* Centers the element itself if needed and removes any default margin */
+  color: #fff; /* Adjust the text color if needed for visibility */
+  padding: 10px 0; /* Adds some padding for better spacing, adjust as necessary */
+}
+
+.game-over-container {
+  display: flex;
+  height: 40vh;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center the text inside the container */
+}
+
+.end-game-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 40vh; /* Use the full height of the viewport to ensure vertical centering */
+  text-align: center; /* Center the text of any direct child text elements */
+  flex-wrap: wrap; /* Allows items to wrap if needed on smaller screens */
+}
+
+.end-game-container > * {
+  margin: 10px; /* Adds space between the gameOver content and the button */
+}
